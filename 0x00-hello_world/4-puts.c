@@ -2,7 +2,8 @@
 /**
  * main -print a line of code using puts 
  *
- * Retutn: 0
+ * Retutn:0
+ 
 */
 int main(void)
 { 
