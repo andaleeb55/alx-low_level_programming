@@ -1,8 +1,3 @@
-/*
- * File: 3-islower.c
- * Auth: Brennan D Baraban
- */
-
 #include "main.h"
 
 /**
