@@ -1,25 +1,32 @@
 /**
- * rot13 -	a		function that encodes a string using rot13.
- * @s: An input string to encode using rot13
- * Return: An encode string
+ * rot13_in_range - encode char @c using rot13 using characters range @a to @z
+ * @a: the start of alphabit
+ * @z: the end of alphabit
+ * @c: the reference to the character to encode using rot13
  */
-char *rot13(char *s)
+void rot13_in_range(char a, char z, char *c)
 {
-	int i = 0;
-
-	while (s[i] != '\0')
+	if (*c >= a && *c <= z)
 	{
-		while ((s[i] >= 'a' && s[i] <= 'z') ||
-				(s[i] >= 'A' && s[i] <= 'Z'))
-		{
-			if ((s[i] >= 'a' && s[i] <= 'm') ||
-					(s[i] >= 'A' && s[i] <= 'M'))
-				s[i] += 13;
-			else
-				s[i] -= 13;
-			i++;
-		}
-		i++;
+		*c -= a;
+		*c = ((*c + 13) % 26) + a;
 	}
-	return (s);
 }
+
+/**
+ * rot13 - encode string using rot13
+ * @str: the reference to string to encode
+ * Return: @str
+ */
+char *rot13(char *str)
+{
+	int i;
+
+	for (i = 0; *(str + i); i++)
+	{
+		rot13_in_range('a', 'z', str + i);
+		rot13_in_range('A', 'Z', str + i);
+	}
+	return (str);
+}
+
