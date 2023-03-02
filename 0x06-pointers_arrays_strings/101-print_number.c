@@ -1,52 +1,33 @@
 #include "main.h"
 
 /**
- * base10 - power in 10 base
- * @n: an exponent
- * Return: returns 10 to power exponent
- */
-int base10(int n)
-{
-	int base = 10;
-
-	while (n > 0)
-	{
-		base *= 10;
-		n--;
-	}
-	return (base);
-}
-
-/**
- * print_number - prints integers enters as parameters using putchar
- * @n: integer to print
+ * print_number - print number in ascii characters
+ * @n: the number to print
  * Return: void
  */
 void print_number(int n)
 {
-	int power;
-
-	power = base10(8);
+	unsigned int a, tens = 1;
 
 	if (n < 0)
 	{
-		_putchar('-');
-		n *= -1;
+		_putchar(45);
+		a = -n;
 	}
-
-	if (n == 0)
-		_putchar('0');
-
 	else
 	{
-		while (n / power == 0)
-			power /= 10;
+		a = n;
+	}
 
-		while (power >= 1)
-		{
-			_putchar((n / power) + '0');
-			n %= power;
-			power /= 10;
-		}
+	/* find the nearest floored 10s to a*/
+	while (a / tens >= 10)
+		tens *= 10;
+
+	while (a > 0 || tens > 0)
+	{
+		_putchar(a / tens + 48);
+		a %= tens;
+		tens /= 10;
 	}
 }
+
