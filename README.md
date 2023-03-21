@@ -8,3 +8,4 @@
 - 0x05-pointers_arrays_strings
 - 0x06-pointers_arrays_strings
 - 0x08-recursion
+- 0x0C-more_malloc_free
